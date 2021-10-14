@@ -20,4 +20,11 @@ phases:
     commands:
      - echo "build phase started"
      - echo "build complete"
+  post_build:
+    commands:
+      - echo "publishing to expo default channel"
+      - npx expo publish --non-interactive
+
+artifacts:
+    baseDirectory: android-build
 
