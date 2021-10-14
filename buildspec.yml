@@ -1,29 +1,23 @@
-version:0.2
+version: 0.2
 
-env:
-  variables:
-  EXPO_USERNAME: <shubham21>
 phases:
   install:
-    runtime-versions:
-      nodejs: 10
-  
-  pre_build:
     commands:
-      - npm install
-      - echo "Installing Expo"
-      - npm install -g expo-cli
-      - expo --version
-#      - export EXPO_CLI_PASSWORD=$(aws ssm get-parameter --name "Shastri@1994" --region <ap-south-1> --query 'Parameter.Value' --output text)
-      - npx expo login --non-interactive -u ${EXPO_USERNAME}
+     - echo "install phase started"
+     - npm install
+     - echo "install phase ended"
+  pre_build: 
+    commands:
+     - npm install
+     - echo "Installing Expo"
+     - npm install -g expo-cli
+     - expo --version	
+     - echo "pre_build test phase started"
+     - echo " unit test"
+     - npm test
+     - echo "unit test ended"
   build:
     commands:
-      - echo "Executing build"
-      - expo build:android 
- post_build:
-    commands:
-      - echo "publishing to expo default channel"
-      - npx expo publish --non-interactive
+     - echo "build phase started"
+     - echo "build complete"
 
-artifacts:
-    baseDirectory: android-build
