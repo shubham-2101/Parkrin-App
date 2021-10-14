@@ -15,7 +15,7 @@ phases:
       - npm install --save-dev -g expo-cli
       - expo --version
       - export EXPO_CLI_PASSWORD=$(aws ssm get-parameter --name "Shastri@1994" --region <ap-south-1> --query 'Parameter.Value' --output text)
-     - npx expo login --non-interactive -u ${EXPO_USERNAME}
+      - npx expo login --non-interactive -u ${EXPO_USERNAME}
   build:
     commands:
       - echo "Executing NPM Build for production"
