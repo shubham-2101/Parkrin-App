@@ -1,4 +1,6 @@
-version: 0.2env:
+version: 0.2
+
+env:
   variables:
   EXPO_USERNAME: <shubham21>
 phases:
