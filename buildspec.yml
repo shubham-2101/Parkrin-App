@@ -1,27 +1,24 @@
-version: 0.2
-
+version: 0.2env:
+  variables:
+  EXPO_USERNAME: <shubham21>
 phases:
-
-    INSTALL:
-        runtime-versions:
-            nodejs: 10
-        commands:
-            - npm install
-
-
-    PRE_BUILD:
-      commands:
-        - npm install --quiet --global expo-cli
-        - >
-          if [ -f yarn.lock ]; then
-            yarn
-          elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-    BUILD:
-      commands:
-        - expo build:android
-artifacts:
-    baseDirectory: android-build
+  install:
+    runtime-versions:
+      nodejs: 10
+  
+  pre_build:
+    commands:
+      - npm install
+      - echo "Installing Expo"
+      - npm install --save-dev -g expo-cli
+      - expo --version
+      - export EXPO_CLI_PASSWORD=$(aws ssm get-parameter --name "Shastri@1994" --region <ap-south-1> --query 'Parameter.Value' --output text)
+     - npx expo login --non-interactive -u ${EXPO_USERNAME}
+  build:
+    commands:
+      - echo "Executing NPM Build for production"
+      - npx expo publish --non-interactive --release-channel dev-${CODEBUILD_BUILD_NUMBER} 
+ post_build:
+    commands:
+      - echo "publishing to expo default channel"
+      - npx expo publish --non-interactive
