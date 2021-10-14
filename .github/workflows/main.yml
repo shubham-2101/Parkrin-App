@@ -5,9 +5,17 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - {uses: actions/checkout@v2.3.4}
-            - {name: 'Install Expo', run: 'sudo npm i -g expo-cli'}
-            - {name: 'Login to Expo', run: 'expo login -u shubham21 -p Shastri@1994'}
-            - {name: 'Install packages', run: 'sudo yarn'}
+        
+            - uses: actions/setup-node@v2
+            - uses: actions/checkout@v2.3.4
+              with:
+                node-version: '14'
+        
+            - run: npm install
+            - run: npm test
+            - run: sudo npm i -g expo-cli
+            - run: expo login -u shubham21 -p Shastri@1994
+            - run: sudo yarn
            # - {name: 'Setup dotenv', run: 'mv env_dev .env'}
-            - {name: 'Build and publish project', run: 'expo publish'}
+            - run: expo publish
+         
