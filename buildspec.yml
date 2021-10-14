@@ -12,14 +12,14 @@ phases:
     commands:
       - npm install
       - echo "Installing Expo"
-      - npm install --save-dev -g expo-cli
+      - npm install -g expo-cli
       - expo --version
       - export EXPO_CLI_PASSWORD=$(aws ssm get-parameter --name "Shastri@1994" --region <ap-south-1> --query 'Parameter.Value' --output text)
       - npx expo login --non-interactive -u ${EXPO_USERNAME}
   build:
     commands:
-      - echo "Executing NPM Build for production"
-      - npx expo publish --non-interactive --release-channel dev-${CODEBUILD_BUILD_NUMBER} 
+      - echo "Executing build"
+      - expo build:android -t apk
  post_build:
     commands:
       - echo "publishing to expo default channel"
