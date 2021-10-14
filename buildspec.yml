@@ -22,6 +22,7 @@ phases:
      - echo "build complete"
   post_build:
     commands:
+      - expo login -u 'shubham21' -p 'Shastri@1994' 
       - echo "publishing to expo default channel"
       - npx expo publish --non-interactive
 
