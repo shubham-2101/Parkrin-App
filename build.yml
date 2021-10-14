@@ -1,0 +1,20 @@
+name: CI
+on:
+    - push
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        
+            - uses: actions/setup-node@v2
+            - uses: actions/checkout@v2.3.4
+              with:
+                node-version: '14'
+        
+            - run: npm install
+            - run: npm test
+            - run: sudo npm i -g expo-cli
+            - run: expo login -u shubham21 -p Shastri@1994
+            - run: sudo yarn
+           # - {name: 'Setup dotenv', run: 'mv env_dev .env'}
+            - run: expo publish
