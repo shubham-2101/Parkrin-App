@@ -27,5 +27,5 @@ phases:
       - npx expo publish --non-interactive
 
 artifacts:
-    baseDirectory: android-build
-
+  files:
+    app/build/outputs/app-debug.apk
