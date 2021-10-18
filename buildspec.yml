@@ -25,8 +25,8 @@ phases:
       - expo login -u 'shubham21' -p 'Shastri@1994'
       - expo build:android 
       - echo "publishing to expo default channel"
-      - npx expo publish --non-interactive
+    #  - npx expo publish --non-interactive
 
-artifacts:
-  files:
-    app/build/outputs/app-debug.apk
+#artifacts:
+ # files:
+  #  app/build/outputs/app-debug.apk
