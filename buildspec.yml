@@ -4,8 +4,7 @@ phases:
   install:
     commands:
      - echo "Installing phase started..."
-     - npm install
-     - npm install nodejs -y
+     - yarn install
      - echo "install phase ended"
 
   pre_build: 
@@ -22,7 +21,8 @@ phases:
     commands:
      #- aws configure
      - echo "build phase started..."
-     #- expo login -u 'shubham21' -p 'Shastri@1994'
+     #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
+     - npx expo login -u 'shubham21' -p 'Shastri@1994'
      - turtle build:android
      #- expo build:android
      - echo "build complete"

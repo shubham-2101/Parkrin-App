@@ -40,7 +40,8 @@
     "react-native-web": "^0.17.1",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "turtle-cli": "^0.23.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
