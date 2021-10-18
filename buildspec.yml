@@ -25,6 +25,11 @@ phases:
   post_build:
     commands:
       - echo "Updating files to s3 bucket..."
-      - aws s3 cp build s3://react-native-1 --recursive
-      - aws s3 sync build/ s3://react-native-1
-           # - aws s3 sync /home/shubham/Parkrin-App/ s3://react-native-1
+      - aws s3 cp --recursive --acl public-read ./build s3://react-native-1/public/
+     # - aws s3 cp build s3://react-native-1 --recursive
+     # - aws s3 sync build/ s3://react-native-1
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
+    
