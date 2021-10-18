@@ -3,23 +3,26 @@ version: 0.2
 phases:
   install:
     commands:
-     - echo "install phase started..."
+     - echo "Installing phase started..."
      - npm install
+     - npm install nodejs -y
      - echo "install phase ended"
+
   pre_build: 
     commands:
-     - npm install
-     - echo "Installing Expo"
+     - echo "Installing turtle"
      - npm install -g turtle-cli
      - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
      - npm test
      - echo "unit test ended"
+
   build:
     commands:
+     #- aws configure
      - echo "build phase started..."
-     - expo login -u 'shubham21' -p 'Shastri@1994'
+     #- expo login -u 'shubham21' -p 'Shastri@1994'
      - turtle build:android
      #- expo build:android
      - echo "build complete"
