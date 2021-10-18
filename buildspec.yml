@@ -4,13 +4,13 @@ phases:
   install:
     commands:
      - echo "Installing phase started..."
-     - yarn install
+     - npm install
      - echo "install phase ended"
 
   pre_build: 
     commands:
      - echo "Installing turtle"
-     - sudo npm install -g turtle-cli --unsafe-perm
+     - npm install -g turtle-cli --unsafe-perm
      - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
