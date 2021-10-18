@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-     - echo "install phase started"
+     - echo "install phase started..."
      - npm install
      - echo "install phase ended"
   pre_build: 
@@ -18,15 +18,11 @@ phases:
      - echo "unit test ended"
   build:
     commands:
-     - echo "build phase started"
+     - echo "build phase started..."
+     - expo login -u 'shubham21' -p 'Shastri@1994'
+     - expo build:android
      - echo "build complete"
   post_build:
     commands:
-      - expo login -u 'shubham21' -p 'Shastri@1994'
-      - expo build:android 
-      - echo "publishing to expo default channel"
-    #  - npx expo publish --non-interactive
-
-artifacts:
-  files:
-    react-native/app-debug.apk
+      - echo "Updating files to s3 bucket..."
+      - aws s3 sync /home/shubham/Parkrin-App/ s3://react-native-1
