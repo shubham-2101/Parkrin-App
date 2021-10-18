@@ -10,8 +10,8 @@ phases:
     commands:
      - npm install
      - echo "Installing Expo"
-     - npm install -g expo-cli
-     - expo --version	
+     - npm install -g turtle-cli
+     - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
      - npm test
@@ -20,7 +20,8 @@ phases:
     commands:
      - echo "build phase started..."
      - expo login -u 'shubham21' -p 'Shastri@1994'
-     - expo build:android
+     - turtle build:android
+     #- expo build:android
      - echo "build complete"
   post_build:
     commands:
