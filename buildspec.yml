@@ -23,10 +23,10 @@ phases:
     commands:  
      - echo "build phase started..."
      #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
-     - turtle build:android \\
-         --keystore-path /home/shubham/Parkrin-App/Parkirin.jks \\
+     - turtle build:android 
+         --keystore-path /home/shubham/Parkrin-App/Parkirin.jks
          --keystore-alias QHNodWJoYW0yMS9QYXJraXJpbg==
-
+         --public-url https://127.0.0.1/dist/android-index.json -t apk
      - echo "build complete"
 
   post_build:
