@@ -10,7 +10,7 @@ phases:
   pre_build: 
     commands:
      - echo "Installing turtle"
-     - npm install -g turtle-cli --unsafe-perm
+     - npm install -g turtle-cli gulp-cli expo-cli --unsafe-perm=true --allow-root
      - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
@@ -22,7 +22,7 @@ phases:
      #- aws configure
      - echo "build phase started..."
      #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
-     - npx expo login -u 'shubham21' -p 'Shastri@1994'
+     #- npx expo login -u 'shubham21' -p 'Shastri@1994'
      - turtle build:android
      #- expo build:android
      - echo "build complete"
