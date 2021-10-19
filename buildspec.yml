@@ -23,6 +23,9 @@ phases:
     commands:  
      - apt-get update
      - apt-get install -y openjdk-8-jdk
+     - apt-get install -y openjdk-8-jre
+     - update-alternatives --config java
+     - update-alternatives --config javac
      - echo "build phase started..."
      #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
      - turtle build:android 
