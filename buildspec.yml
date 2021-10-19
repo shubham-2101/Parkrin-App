@@ -8,13 +8,9 @@ phases:
      - echo "install phase ended"
 
   pre_build: 
-    runs-on: ubuntu:latest
-    env:
-      EXPO_CLI_USER: shubham21
-      EXPO_CLI_PASSWORD: Shastri@1994  
     commands:
      - echo "Installing turtle"
-     - npm install -g turtle-cli expo-cli--unsafe-perm=true --allow-root
+     - npm install -g turtle-cli expo cli--unsafe-perm=true --allow-root
      - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
@@ -22,14 +18,10 @@ phases:
      - echo "unit test ended"
 
   build:
-      runs-on: ubuntu:latest
-    env:
-      EXPO_CLI_USER: shubham21
-      EXPO_CLI_PASSWORD: Shastri@1994  
-
     commands:  
      - echo "build phase started..."
-     - npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
+     - npx expo login -u 'shubham21' -p 'Shastri@1994'
+     #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
      - turtle build:android --type apk
      - echo "build complete"
 
