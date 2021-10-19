@@ -8,6 +8,10 @@ phases:
      - echo "install phase ended"
 
   pre_build: 
+    runs-on: ubuntu:latest
+    env:
+      EXPO_CLI_USER: shubham21
+      EXPO_CLI_PASSWORD: Shastri@1994  
     commands:
      - echo "Installing turtle"
      - npm install -g turtle-cli expo-cli--unsafe-perm=true --allow-root
@@ -18,14 +22,17 @@ phases:
      - echo "unit test ended"
 
   build:
-    commands:
-     #- aws configure
+      runs-on: ubuntu:latest
+    env:
+      EXPO_CLI_USER: shubham21
+      EXPO_CLI_PASSWORD: Shastri@1994  
+
+    commands:  
      - echo "build phase started..."
-     #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
-     - npx expo login -u 'shubham21' -p 'Shastri@1994'
+     - npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
      - turtle build:android --type apk
-     #- expo build:android
      - echo "build complete"
+
   post_build:
     commands:
       - echo "Updating files to s3 bucket..."
