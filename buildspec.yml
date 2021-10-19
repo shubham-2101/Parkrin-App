@@ -10,7 +10,7 @@ phases:
   pre_build: 
     commands:
      - echo "Installing turtle"
-     - npm install -g turtle-cli expo cli--unsafe-perm=true --allow-root
+     - npm install -g turtle-cli expo cli --unsafe-perm=true --allow-root
      - turtle --version	
      - echo "pre_build test phase started"
      - echo " unit test"
