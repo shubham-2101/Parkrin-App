@@ -6,7 +6,7 @@ phases:
   install:
     commands:
      - echo "Installing phase started..."
-     - npm install
+     - apt-get install npm
      - echo "install phase ended"
 
   pre_build: 
