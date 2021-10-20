@@ -2,6 +2,10 @@ version: 0.2
 env:
   variables:
     JAVA_8: (alternatives --display java | grep 'family java-8-openjdk' | cut -d' ' -f1)
+    EXPO_USERNAME: shubham21
+    EXPO_PASSWORD: Shastri@1994
+    EXPO_ANDROID_KEYSTORE_PASSWORD: 61ce81c9b6f84e608eb6972af12bc086 
+    EXPO_ANDROID_KEY_PASSWORD: 65cb0df149c948a09ec463292249b130
 phases:
   install:
     commands:
@@ -15,7 +19,7 @@ phases:
      - npm install -g turtle-cli --unsafe-perm=true --allow-root
      - turtle --version	
      - npm install -g expo-cli
-     - npx expo login -u 'shubham21' -p 'Shastri@1994'
+     - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
      - echo "pre_build test phase started"
      - echo " unit test"
      - npm test
@@ -35,6 +39,8 @@ phases:
      - echo "build phase started..."
      #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
      - turtle build:android 
+          --type apk \
+          --public-url https://0.0.0.0:4443/Parkrin-App-app.json
      - echo "build complete"
 
   post_build:
