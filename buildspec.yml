@@ -9,7 +9,7 @@ phases:
   pre_build: 
     commands:
       - npm install
-      - expo login --username [EXPO_USERNAME] --password [EXPO_PASSWORD]
+      - expo login --username sayeed99 --password Iamsocool@99
       - expo publish
       - expo fetch:android:keystore
   build:
