@@ -26,7 +26,7 @@ phases:
      - apt-get update
      - apt-get install -y openjdk-8-jdk
      - apt-get install -y openjdk-8-jre
-     - alternatives --set java $JAVA_8
+     - update-alternatives --set java $JAVA_8
      - update-alternatives --config java
      - update-alternatives --config javac
      - java -version
