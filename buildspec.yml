@@ -4,6 +4,7 @@ phases:
     commands:
      - echo "Installing phase started..."
      - npm install 
+     - npm install -g turtle-cli
      - echo "install phase ended"
 
   pre_build: 
