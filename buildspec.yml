@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    JAVA_8: $(alternatives --display java | grep 'family java-1.8.0-openjdk' | cut -d' ' -f1)
+    JAVA_8: (alternatives --display java | grep 'family java-8-openjdk' | cut -d' ' -f1)
 phases:
   install:
     commands:
@@ -30,7 +30,7 @@ phases:
      - update-alternatives --config javac
      - update-alternatives --set java $JAVA_8
      - java -version
-     - update-alternatives --set java /usr/lib/jvm/jdk8_version/bin/java
+     #- update-alternatives --set java /usr/lib/jvm/jdk8_version/bin/java
      - echo "build phase started..."
      #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
      - turtle build:android 
