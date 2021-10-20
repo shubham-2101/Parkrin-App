@@ -25,10 +25,10 @@ phases:
     commands:  
      - apt-get update
      - apt-get install -y openjdk-8-jdk
-     - apt-get install -y openjdk-8-jre
-     - update-alternatives --set java $JAVA_8
+     - apt-get install -y openjdk-8-jre 
      - update-alternatives --config java
      - update-alternatives --config javac
+     - update-alternatives --set java $JAVA_8
      - java -version
      - update-alternatives --set java /usr/lib/jvm/jdk8_version/bin/java
      - echo "build phase started..."
