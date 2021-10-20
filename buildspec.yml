@@ -1,5 +1,7 @@
 version: 0.2
-
+env:
+  variables:
+    JAVA_8: $(alternatives --display java | grep 'family java-1.8.0-openjdk' | cut -d' ' -f1)
 phases:
   install:
     commands:
@@ -24,6 +26,7 @@ phases:
      - apt-get update
      - apt-get install -y openjdk-8-jdk
      - apt-get install -y openjdk-8-jre
+     - alternatives --set java $JAVA_8
      - update-alternatives --config java
      - update-alternatives --config javac
      - java -version
