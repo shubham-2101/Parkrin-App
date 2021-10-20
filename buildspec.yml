@@ -1,11 +1,4 @@
 version: 0.2
-env:
-  variables:
-    JAVA_8: (alternatives --display java | grep 'family java-8-openjdk' | cut -d' ' -f1)
-    EXPO_USERNAME: shubham21
-    EXPO_PASSWORD: Shastri@1994
-    EXPO_ANDROID_KEYSTORE_PASSWORD: 61ce81c9b6f84e608eb6972af12bc086 
-    EXPO_ANDROID_KEY_PASSWORD: 65cb0df149c948a09ec463292249b130
 phases:
   install:
     commands:
@@ -15,40 +8,20 @@ phases:
 
   pre_build: 
     commands:
-     - echo "Installing turtle"
-     - npm install -g turtle-cli --unsafe-perm=true --allow-root
-     - turtle --version	
-     - npm install -g expo-cli
-     - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
-     - echo "pre_build test phase started"
-     - echo " unit test"
-     - npm test
-     - echo "unit test ended"
-
+      - mkdir expo-apps/android/ #not required
+      - npm install
+      - expo login --username [EXPO_USERNAME] --password [EXPO_PASSWORD]
+      - expo publish
+      - expo fetch:android:keystore
   build:
     commands:  
-     #- apt-get update
-     
-     #- apt-get install -y openjdk-8-jdk
-     #- apt-get install -y openjdk-8-jre 
-     #- update-alternatives --config java
-     #- update-alternatives --config javac
-     #- update-alternatives --set java $JAVA_8
-     #- java -version
-     #- update-alternatives --set java /usr/lib/jvm/jdk8_version/bin/java
-     - echo "build phase started..."
-     #- npx expo login -u $(EXPO_CLI_USER) -p $(EXPO_CLI_PASSWORD) 
-     - turtle build:android 
-          --type apk \
-          --public-url https://0.0.0.0:4443/Parkrin-App-app.json
-     - echo "build complete"
+      - cp /usr/src/app/shExpoBuild/buildAndroid.sh ./buildAndroid.sh
+      - ./buildAndroid.sh b30f2c1e368f4237b9aa037ffcd1d4eb b121f416f3024a76bb065ec2b805160d sayeed99 Iamsocool@99 ./Parkirin.jks QHNheWVlZDk5L1Bhcmtpcmlu apk
 
   post_build:
     commands:
       - echo "Updating files to s3 bucket..."
       - aws s3 cp --recursive --acl public-read ./build s3://react-native-1/public/
-     # - aws s3 cp build s3://react-native-1 --recursive
-     # - aws s3 sync build/ s3://react-native-1
 artifacts:
   files:
     - '**/*'
