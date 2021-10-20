@@ -1,0 +1,3 @@
+keystore-path /home/shubham/Parkrin-App/Parkirin.jks
+keystore-alias QHNodWJoYW0yMS9QYXJraXJpbg==
+public-url https://127.0.0.1/dist/android-index.json -t apk
