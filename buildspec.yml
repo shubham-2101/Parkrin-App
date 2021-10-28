@@ -3,8 +3,6 @@ phases:
   install:
     commands:
      - echo "Installing phase started..."
-     - yarn global add expo-cli
-     - yarn global add turtle-cli
      - turtle -V
      - yarn install
      - echo "install phase ended"
