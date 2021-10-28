@@ -12,6 +12,8 @@ phases:
       - expo login --username sayeed99 --password Iamsocool@99
   build:
     commands:  
+    - rm debugstore.jks
+    - rm debug-keystore.jks
     - turtle setup:android --sdk-version $SDK_VERSION
     - keytool -genkey -v -keystore ${KEYSTORE_PATH} -alias ${KEYSTORE_ALIAS} -keyalg RSA -keysize 2048 -validity 10000  -dname "cn=Tobias Benkner, ou=MyApp, o=BenknerIT, c=DE" -keypass ${EXPO_ANDROID_KEY_PASSWORD} -storepass ${EXPO_ANDROID_KEYSTORE_PASSWORD}
     - keytool -list -keystore ${KEYSTORE_PATH} -storepass ${EXPO_ANDROID_KEYSTORE_PASSWORD}
