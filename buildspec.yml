@@ -18,10 +18,16 @@ phases:
     # - keytool -genkey -v -keystore ${KEYSTORE_PATH} -alias ${KEYSTORE_ALIAS} -keyalg RSA -keysize 2048 -validity 10000  -dname "cn=Tobias Benkner, ou=MyApp, o=BenknerIT, c=DE" -keypass ${EXPO_ANDROID_KEY_PASSWORD} -storepass ${EXPO_ANDROID_KEYSTORE_PASSWORD}
     - keytool -list -keystore ${KEYSTORE_PATH} -storepass ${EXPO_ANDROID_KEYSTORE_PASSWORD}
     - turtle build:android --type apk --keystore-path ${KEYSTORE_PATH} --keystore-alias ${KEYSTORE_ALIAS} --username sayeed99 --password Iamsocool@99 -o ${ARTIFACT_PATH}
+
   post_build:
     commands:
       - echo "Updating files to s3 bucket..."
-      - aws s3 cp --recursive --acl public-read ./build s3://react-native-1/public/
+      - >
+        aws s3 cp --acl public-read 
+        --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
+        ./build/service-worker.js s3://react-native-1/ 
+      - aws s3 cp --recursive --acl public-read ./build s3://react-native-1/
+
 artifacts:
   files:
     - '**/*'
