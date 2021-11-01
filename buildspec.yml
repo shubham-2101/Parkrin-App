@@ -23,7 +23,7 @@ phases:
     commands:
       - echo "Updating files to s3 bucket..." 
 #      - aws s3 cp --recursive --acl public-read ./build s3://react-native-1/
-      - aws s3 cp "app.apk s3://$S3_BUCKET/app.apk
+      - aws s3 cp app.apk s3://$S3_BUCKET/app.apk
 
 #artifacts:
  # files:
